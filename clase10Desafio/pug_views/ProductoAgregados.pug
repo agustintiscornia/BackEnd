@@ -1,0 +1,21 @@
+extends index.pug 
+
+block contenido 
+    h1 Productos Agregados
+
+    if productos[0].title
+        table
+            thead
+                th Title
+                th Price
+                th Thumbnail
+            tbody
+                each prod in productos
+                    tr
+                        td= prod.title
+                        td= '$' + prod.price
+                        td 
+                            img(src=prod.thumbnail)
+    else 
+        h2 No se han agregado productos
+    a(href="http://localhost:8080/") Cargar productos

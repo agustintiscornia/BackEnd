@@ -1,16 +1,26 @@
 const express = require("express");
 const { Router } = express;
-const Contenedor = require("./container.js");
+const Contenedor = require("./container.js.js");
 
 const app = express();
 const routerProductos = Router();
 
 const productos = new Contenedor();
 
+app.engine(
+  'hbs',
+  engine({
+      extname: '.hbs',
+      defaultLayout: 'index.hbs',
+  })
+);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public')); 
 
+app.set('views','./Back-End/appConHanddlebars/hbs_views');
+app.set('view engine','hbs');
 // GET /api/productos --> devuelve todos los productos
 
 routerProductos.get("/", (req, res) => {

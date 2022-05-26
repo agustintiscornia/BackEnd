@@ -11,6 +11,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public')); 
 
+
+app.set('views','./Back-End/clase10Desafio/pug_views');
+app.set('view engine','pug');
 // GET /api/productos --> devuelve todos los productos
 
 routerProductos.get("/", (req, res) => {
